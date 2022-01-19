@@ -1,0 +1,21 @@
+.wrapper {
+    background-color: white !important;
+    color: black !important;
+    padding: 0 30px;
+}
+
+.btn {
+    color: black !important;
+}
+
+.wrapper>div>div {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+
+}
+
+.wrapper  .MuiBox-root-2{
+    width: 50% !important;
+}

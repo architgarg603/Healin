@@ -1,0 +1,23 @@
+.card{
+    width: 300px;
+    height: 300px;
+    margin: 60px 20px;
+    box-shadow: 10px 40px 50px rgba(203, 209, 223, 0.4);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.img{
+    width: 60px;
+}
+.head{
+    font-size: x-large;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.msg{
+    font-size: small;
+    color: gray;
+}
