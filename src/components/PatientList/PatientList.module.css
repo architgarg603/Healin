@@ -1,0 +1,14 @@
+.wrapper {
+    background: linear-gradient(180deg, #E1ECFF 0%, rgba(241, 246, 254, 0) 100%);
+    width: 100%;
+    height: calc(100vh - 70px);
+    padding: 0 10%;
+    padding-top: 50px;
+}
+
+.head {
+    color: #1A2B8B;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-bottom: 50px;
+}

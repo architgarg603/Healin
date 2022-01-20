@@ -20,9 +20,9 @@ const useStyles = makeStyles(() => ({
     mainContainer: {
         padding: 12,
         overflow: "hidden",
-        minWidth: '200px',
         height: '100%',
         // maxWidth: '300px',
+        minWidth: '200px',
         width: '20vw',
         border: 'none',
         borderRadius: 0,
@@ -139,7 +139,8 @@ export default function Transcript({ height }) {
     useEffect(() => {
         if (newMessages && newMessages.length > 0) {
             const newTranscriptItems = newMessages.map(message => convertMessageToTranscriptItem(message, startedTime));
-            console.log(newTranscriptItems);
+            let arr = [...transcriptItems, ...newTranscriptItems];
+            localStorage.setItem("trans", JSON.stringify(arr));
             
             setTranscriptItems([...transcriptItems, ...newTranscriptItems]);
         }

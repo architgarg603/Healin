@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react'
 import style from './Profile.module.css'
 import img from '../../assets/profile.png'
+import { useHistory } from 'react-router-dom';
+import axios from '../../axios';
 
 const useStyles = makeStyles((theme) => ({
     dp: { height: "200px", width: "200px" }
@@ -11,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Profile() {
+    const history = useHistory()
     const classes = useStyles();
     const [editable, setEditable] = useState(true);
     const [details, setDetails] = useState({
@@ -19,6 +22,26 @@ function Profile() {
         email: "archit@gmail.com",
         ph: "123456789"
     })
+
+    useEffect(() => {
+        let token = localStorage.getItem("token");
+        if (!token)
+            history.pushState("/login")
+
+        axios.post("/user/getuser", { "jwt":token }).then(data => {
+            console.log(data.data.data[0])
+            let obj = data.data.data[0];
+            setDetails({
+                fname: obj.name.split(" ")[0],
+                lname : obj.name.split(" ")[1] || "",
+                email:obj.email,
+                ph:obj.phone
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+
+    },[])
 
 
     const onChangeHandler = (e, key) => {
@@ -33,7 +56,7 @@ function Profile() {
         <div className={style.wrapper}>
             <div className={style.left}>
                 <Avatar src={img} className={[style.dp, classes.dp].join(" ")} />
-                <div className={style.name}>Name</div>
+                <div className={style.name}>{details.fname+" "+details.lname}</div>
             </div>
             <div className={style.right}>
                 <div className={style.head}>Basic Information</div>

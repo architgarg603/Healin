@@ -19,6 +19,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Homepage from './components/Homepage/Homepage';
 import Profile from './components/Profile/Profile';
+import PatientList from './components/PatientList/PatientList';
 
 const basePath = config.appBasePath || "/";
 
@@ -29,7 +30,6 @@ const VideoApp = () => {
     return (
         <UnsupportedBrowserWarning>
             <VideoProvider options={connectionOptions} onError={setError}>
-                {/*<ErrorDialog dismissError={() => setError(null)} error={error} />*/}
                 <App />
             </VideoProvider>
         </UnsupportedBrowserWarning>
@@ -46,9 +46,7 @@ ReactDOM.render(
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
                     <Route path="/profile" component={Profile} />
-                    {/* <PrivateRoute exact path={basePath}>
-                        <VideoApp />
-                    </PrivateRoute> */}
+                    <Route path="/patients" component={PatientList} />
                     <PrivateRoute exact path={`${basePath}room/:URLRoomName`}>
                         <VideoApp />
                     </PrivateRoute>
@@ -65,7 +63,4 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
