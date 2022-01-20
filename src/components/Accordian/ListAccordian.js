@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -41,14 +41,12 @@ export default function ListAccordions({ Records }) {
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
-    console.log(Records);
-
     return (
         <div className={classes.root}>
             {Records.map((data, idx) => {
 
                 return (
-                    <Accordion key={idx} className={classes.accordian} expanded={expanded === data.date} onChange={handleChange(data.date)}>
+                    <Accordion key={idx} className={classes.accordian} expanded={expanded === data.id} onChange={handleChange(data.id)}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon className={classes.icon} />}
                         >

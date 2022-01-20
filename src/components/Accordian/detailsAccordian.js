@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import axios from 'axios';
+import { getAccessToken } from '../../utils/symbl/utils';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -36,14 +38,46 @@ const useStyles = makeStyles((theme) => ({
 export default function DetailsAccordions({ data }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    let pData = [];
-    for(let key in data){
-        if(key == "date")continue;
-        pData.push({
-            name:key,
-            val:data[key]
+    const [pData, setPData] = useState([])
+
+    const getSymbl = async (id, record) => {
+        let token = await getAccessToken({ appId: process.env.REACT_APP_SYMBL_APP_ID, appSecret: process.env.REACT_APP_SYMBL_APP_SECRET })
+        token = ("Bearer " + token.accessToken);
+        let data = await axios.get(`https://api.symbl.ai/v1/conversations/${id}/messages?summary=true&sentiment=true`, {
+            headers: {
+                Authorization: token
+            }
         })
+        let arr = data.data.messages
+        let senti = 0;
+        let summery = ""
+        for (let i = 0; i < arr.length; i++) {
+
+            if (arr[i].sentiment.suggested == 'negetive') {
+                senti--;
+            } else if (arr[i].sentiment.suggested == 'positive') {
+                senti++;
+            }
+            summery += " " + arr[i].text
+        }
+        senti /= arr.length
+        let allLis = record.transcript.map(x => <li key={x.id}>{x.text}</li>)
+        let ul = <ul>{allLis}</ul>
+        setPData([...pData,
+        { name: "Sentiment", val: (senti > 0 ? "Positive" : (senti == 0 ? "Neutral" : "Negetive")) },
+        { name: "Summary", val: summery },
+        { name: "Notes", val: record.notes },
+        { name: "Transcript", val: ul }])
+
+
     }
+
+    useEffect(() => {
+        if (data?.id)
+            getSymbl(data.id, data)
+    }, [data])
+
+
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
@@ -61,7 +95,7 @@ export default function DetailsAccordions({ data }) {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography>
-                               {data.val}
+                                {data.val}
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
