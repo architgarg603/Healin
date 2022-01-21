@@ -1,5 +1,6 @@
 .wrapper{
     height: calc(100vh - 70px);
+    color: black;
 }.h1 {
     height: 70vh;
     width: 100%;

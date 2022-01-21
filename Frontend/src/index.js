@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom';
 import './index.css';
@@ -26,6 +26,7 @@ const basePath = config.appBasePath || "/";
 const VideoApp = () => {
     const { setError, settings } = useAppState();
     const connectionOptions = generateConnectionOptions(settings);
+
 
     return (
         <UnsupportedBrowserWarning>
