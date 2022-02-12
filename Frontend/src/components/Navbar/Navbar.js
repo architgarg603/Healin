@@ -19,7 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 function Navbar() {
     // const classes = useStyles();
-    const pages = ['Home', 'Patients', 'Profile'];
+    const pages = ['Home', 'Patients', 'Profile', 'Selfcare'];
     const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
     const history = useHistory();
     const location = useLocation();

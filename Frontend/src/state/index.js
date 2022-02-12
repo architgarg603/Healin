@@ -32,7 +32,9 @@ export default function AppStateProvider(props) {
       ...contextValue,
       getToken: async (identity, roomName) => {
         const headers = new window.Headers();
+      
         const endpoint = process.env.REACT_APP_TWILIO_TOKEN_ENDPOINT || '/twilio-token';
+        
         const params = new window.URLSearchParams({ identity, roomName });
 
         return fetch(`${endpoint}?${params}`, { headers, mode: 'cors'}).then(res => res.text());

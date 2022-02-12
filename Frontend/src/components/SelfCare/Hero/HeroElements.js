@@ -34,28 +34,33 @@ export const HeroItems = styled.div`
 `;
 
 export const HeroH1 = styled.h1`
-  font-size: 28px;
+  font-size: clamp(1.7rem, 2.2vw, 2.7rem);
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
+  font-weight:400;
 `;
 
 export const HeroP = styled.p`
+  font-weight:bold;
   font-size: clamp(2rem, 2.5vw, 3rem);
-  margin-bottom: 2rem;
+  margin-top:0.8rem;
+  margin-bottom: 1.5rem;
+  padding-left:30px;
 `;
 
 export const HeroBtn = styled.button`
-  font-size: 1.4rem;
-  padding: 1rem 2rem;
+  font-size: large;
+  cursor:pointer;
+  margin-left:80px;
   border: none;
-  background: #C4C4C4;
-  color: #000;
+  background: #524F5E;
+  color: white;
   transition: 0.2s ease-out;
-  border-radius: 60px;
-  &:hover {
-    background: rgba(165, 165, 165, 1);
-    transition: 0.2s ease-out;
-    cursor: pointer;
-    color: #fff;
-  }
+  border-radius: 20px;
+  height:50px;
+  width:150px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
 `;
