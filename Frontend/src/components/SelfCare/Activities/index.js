@@ -18,10 +18,19 @@ const Hero = () => {
      
         <ActivitiesItems>
         
-          <ActivitiesH2>Why Self-Care?</ActivitiesH2>
-          <ActivitiesP>dfbdf sdfgvdf
+          <ActivitiesH2>Find out your Self Care Activity!</ActivitiesH2>
+          <ActivitiesP>
+            I can spend: <br/>
+            <ActivitiesBtn>5-10 mins</ActivitiesBtn>
+            <ActivitiesBtn>10-30 mins</ActivitiesBtn>
+            <ActivitiesBtn>30-60 mins</ActivitiesBtn>
+            <ActivitiesBtn>60+ mins</ActivitiesBtn>
           </ActivitiesP>
-          <ActivitiesBtn>Are you Ready?</ActivitiesBtn>
+          <ActivitiesP>Location:<br/>
+            <ActivitiesBtn>Indoors</ActivitiesBtn>
+            <ActivitiesBtn>Outdoors</ActivitiesBtn>
+            <ActivitiesBtn>No preference</ActivitiesBtn>
+          </ActivitiesP>
         </ActivitiesItems>
       </ActivitiesContent>
     </ActivitiesContainer>

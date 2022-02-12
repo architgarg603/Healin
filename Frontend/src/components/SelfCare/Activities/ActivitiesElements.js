@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ImgBg from '../../../assets/self3.jpg';
+import ImgBg from '../../../assets/self4.jpg';
 
 export const ActivitiesContainer = styled.div`
   background: url(${ImgBg});
@@ -50,21 +50,26 @@ export const ActivitiesH2 = styled.h2`
 export const ActivitiesP = styled.p`
   font-size: 22px;
   margin-bottom: 2rem;
+  padding: 15px 10px;
   letter-spacing: 1.25px;
+  background-color: rgba(191, 215, 234, 0.21);
+  border-radius: 10px;
+
 `;
 
 export const ActivitiesBtn = styled.button`
-  font-size: 1.4rem;
-  padding: 1rem 2rem;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  margin: 10px;
   border: none;
-  background: #C4C4C4;
-  color: #000;
+  background: #0B3954;
+  color: #fff;
   transition: 0.2s ease-out;
-  border-radius: 60px;
-  &:hover {
-    background: rgba(165, 165, 165, 1);
+  border-radius: 10px;
+    &:hover {
+    background: #9fc3e0;
     transition: 0.2s ease-out;
     cursor: pointer;
-    color: #fff;
+    color: #000;
   }
 `;
