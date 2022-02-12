@@ -20,7 +20,7 @@ import Signup from './components/Signup/Signup';
 import Homepage from './components/Homepage/Homepage';
 import Profile from './components/Profile/Profile';
 import PatientList from './components/PatientList/PatientList';
-
+import SelfCare from './components/SelfCare/Page';
 const basePath = config.appBasePath || "/";
 
 const VideoApp = () => {
@@ -48,6 +48,7 @@ ReactDOM.render(
                     <Route path="/login" component={Login} />
                     <Route path="/profile" component={Profile} />
                     <Route path="/patients" component={PatientList} />
+                    <Route path="/selfcare" component={SelfCare} />
                     <PrivateRoute exact path={`${basePath}room/:URLRoomName`}>
                         <VideoApp />
                     </PrivateRoute>
