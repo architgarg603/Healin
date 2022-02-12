@@ -68,7 +68,6 @@ return (
                 >
                     Healin'Care
                 </Typography>
-                <div style={{ width: "50px" }}></div>
                 {localStorage.getItem("token") ?
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
